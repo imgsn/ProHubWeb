@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="@CultureHelper.HtmlLanguage" dir="@CultureHelper.Direction" style="direction:@CultureHelper.Direction;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProHub.WebUI</title>
+    <!--begin::Fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Almarai:300,400,700" />
+    <!--end::Fonts-->
+    <!--begin::Global Stylesheets Bundle(used by all pages)-->
+    <link href='@Helpers.GetCssLanguage("/assets/plugins/global/plugins.bundle")' rel="stylesheet" type="text/css" />
+    <link href='@Helpers.GetCssLanguage("/assets/css/style.bundle")' rel="stylesheet" type="text/css" />
+    <!--end::Global Stylesheets Bundle-->
+</head>
+<body id="kt_body" data-bs-spy="scroll" data-bs-target="#kt_landing_menu" data-bs-offset="200" class="bg-white position-relative">
+
+
+    @RenderBody()
+
+
+
+
+    <script>var hostUrl = "assets/";</script>
+    <!--begin::Javascript-->
+    <!--begin::Global Javascript Bundle(used by all pages)-->
+    <script src="/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="/assets/js/scripts.bundle.js"></script>
+    <!--end::Global Javascript Bundle-->
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
