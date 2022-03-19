@@ -1,0 +1,332 @@
+﻿@model ProHub.Domain.Dtos.Establishments.EstablishmentDto
+@{
+    ViewData["Title"] = Loc.L("AddEstablishment");
+}
+
+<div class="d-flex flex-column flex-lg-row ">
+    <div class="flex-lg-row-fluid me-lg-15 order-2 order-lg-1 mb-10 mb-lg-0  ">
+        <div class="card ">
+            <div class="card-body  ">
+                <form>
+                    <!--begin::Scroll-->
+                    <div class="flex-lg-row-fluid me-lg-15 order-2 order-lg-1 mb-10 mb-lg-0">
+
+                        <div class=" mb-4">
+                            <label class="required fw-bold fs-4 mb-2" asp-for="ArName"></label>
+                            <div class="input-group input-group-solid mb-5">
+                                <span class="input-group-text">
+                                    <i class="las la-user fs-2 text-primary"></i>
+                                </span>
+                                <input type="text" class="form-control form-control-solid mb-3 mb-lg-0 fs-5" asp-for="ArName" />
+                            </div>
+                        </div>
+                        <div class=" mb-4">
+                            <label class="required fw-bold fs-6 mb-2" asp-for="EnName"></label>
+                            <div class="input-group input-group-solid mb-5">
+                                <span class="input-group-text">
+                                    <i class="las la-user fs-2 text-primary"></i>
+                                </span>
+                                <input type="text" class="form-control form-control-solid mb-3 mb-lg-0 " asp-for="EnName" />
+                            </div>
+                        </div>
+                        <div class=" mb-4">
+                            <label class="fw-bold fs-6 mb-2" asp-for="Address"></label>
+                            <div class="input-group input-group-solid mb-5">
+                                <span class="input-group-text">
+                                    <i class="las la-map-marked fs-1 text-primary"></i>
+                                </span>
+                                <textarea row="10" cols="2" class="form-control form-control-solid mb-3 mb-lg-0" asp-for="Address"></textarea>
+                            </div>
+                        </div>
+                        <div class=" mb-4">
+                            <label class="fw-bold fs-6 mb-2" asp-for="Description"></label>
+                            <div class="input-group input-group-solid mb-5">
+                                <span class="input-group-text">
+                                    <i class="las la-comment fs-1 text-primary"></i>
+                                </span>
+                                <textarea row="10" cols="2" class="form-control form-control-solid mb-3 mb-lg-0" asp-for="Description"></textarea>
+                            </div>
+                        </div>
+                        <div class=" mb-7">
+                            <label class="required fw-bold fs-6 mb-2" asp-for="PhoneNumber"></label>
+                            <input inputmode="text" class="form-control form-control-solid mb-3 mb-lg-0" asp-for="PhoneNumber" />
+                        </div>
+                        <div class=" mb-7">
+                            <label class="required fw-bold fs-6 mb-2" asp-for="ExpiryDate"></label>
+                            <input inputmode="text" class="form-control form-control-solid mb-3 mb-lg-0" asp-for="ExpiryDate" />
+                        </div>
+                        <div class="dropzone" id="kt_dropzonejs_example_1">
+                            <!--begin::Message-->
+                            <div class="dz-message needsclick">
+                                <!--begin::Icon-->
+                                <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
+                                <!--end::Icon-->
+                                <!--begin::Info-->
+                                <div class="ms-4">
+                                    <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Drop files here or click to upload.</h3>
+                                    <span class="fs-7 fw-bold text-gray-400">Upload up to 10 files</span>
+                                </div>
+                                <!--end::Info-->
+                            </div>
+                        </div>
+
+                        <label class="form-check form-check-custom form-check-solid align-items-start">
+                            <!--begin::Input-->
+                            <input class="form-check-input me-3" type="checkbox" name="email-preferences[]" value="1" />
+                            <!--end::Input-->
+                            <!--begin::Label-->
+                            <span class="form-check-label d-flex flex-column align-items-start">
+                                <span class="fw-bolder fs-5 mb-0">Successful Payments</span>
+                                <span class="text-muted fs-6">Receive a notification for every successful payment.</span>
+                            </span>
+                            <!--end::Label-->
+                        </label>
+                        <!--end::Option-->
+                        <!--begin::Option-->
+                        <div class="separator separator-dashed my-6"></div>
+                        <div class="row g-9 mb-5">
+                            <!--begin::Col-->
+                            <div class="col-md-6 fv-plugins-icon-container">
+                                <!--begin::Label-->
+                                <label class="fs-5 fw-bold mb-2">State / Province</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input class="form-control form-control-solid" placeholder="" name="state">
+                                <!--end::Input-->
+                                <div class="fv-plugins-message-container invalid-feedback"></div>
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-md-6  fv-plugins-icon-container">
+                                <!--begin::Label-->
+                                <label class="fs-5 fw-bold mb-2">Post Code</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input class="form-control form-control-solid" placeholder="" name="postcode">
+                                <!--end::Input-->
+                                <div class="fv-plugins-message-container invalid-feedback"></div>
+                            </div>
+                            <!--end::Col-->
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Input group-->
+                        <div class="fv-row mb-7">
+                            <!--begin::Label-->
+                            <label class="required fw-bold fs-6 mb-2">Email</label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            <input type="email" name="user_email" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="example@domain.com" value="e.smith@kpmg.com.au" />
+                            <!--end::Input-->
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Input group-->
+                        <div class="mb-7">
+                            <!--begin::Label-->
+                            <label class="required fw-bold fs-6 mb-5">Role</label>
+                            <!--end::Label-->
+                            <!--begin::Roles-->
+                            <!--begin::Input row-->
+                            <div class="d-flex">
+                                <!--begin::Radio-->
+                                <div class="form-check form-check-custom form-check-solid">
+                                    <!--begin::Input-->
+                                    <input class="form-check-input me-3" name="user_role" type="checkbox" value="0" id="kt_modal_update_role_option_0" checked='checked' />
+                                    <!--end::Input-->
+                                    <!--begin::Label-->
+                                    <label class="form-check-label" for="kt_modal_update_role_option_0">
+                                        <div class="fw-bolder text-gray-800">Administrator</div>
+                                        <div class="text-gray-600">Best for business owners and company administrators</div>
+                                    </label>
+                                    <!--end::Label-->
+                                </div>
+                                <!--end::Radio-->
+                            </div>
+                            <!--end::Input row-->
+                            <div class='separator separator-dashed my-5'></div>
+                            <!--begin::Input row-->
+                            <div class="d-flex fv-row">
+                                <!--begin::Radio-->
+                                <div class="form-check form-check-custom form-check-solid">
+                                    <!--begin::Input-->
+                                    <input class="form-check-input me-3" name="user_role" type="radio" value="1" id="kt_modal_update_role_option_1" />
+                                    <!--end::Input-->
+                                    <!--begin::Label-->
+                                    <label class="form-check-label" for="kt_modal_update_role_option_1">
+                                        <div class="fw-bolder text-gray-800">Developer</div>
+                                        <div class="text-gray-600">Best for developers or people primarily using the API</div>
+                                    </label>
+                                    <!--end::Label-->
+                                </div>
+                                <!--end::Radio-->
+                            </div>
+                            <!--end::Input row-->
+                            <div class='separator separator-dashed my-5'></div>
+                            <!--begin::Input row-->
+                            <div class="d-flex fv-row">
+                                <!--begin::Radio-->
+                                <div class="form-check form-check-custom form-check-solid">
+                                    <!--begin::Input-->
+                                    <input class="form-check-input me-3" name="user_role" type="radio" value="2" id="kt_modal_update_role_option_2" />
+                                    <!--end::Input-->
+                                    <!--begin::Label-->
+                                    <label class="form-check-label" for="kt_modal_update_role_option_2">
+                                        <div class="fw-bolder text-gray-800">Analyst</div>
+                                        <div class="text-gray-600">Best for people who need full access to analytics data, but don't need to update business settings</div>
+                                    </label>
+                                    <!--end::Label-->
+                                </div>
+                                <!--end::Radio-->
+                            </div>
+                            <!--end::Input row-->
+                            <div class='separator separator-dashed my-5'></div>
+                            <!--begin::Input row-->
+                            <div class="d-flex fv-row">
+                                <!--begin::Radio-->
+                                <div class="form-check form-check-custom form-check-solid">
+                                    <!--begin::Input-->
+                                    <input class="form-check-input me-3" name="user_role" type="radio" value="3" id="kt_modal_update_role_option_3" />
+                                    <!--end::Input-->
+                                    <!--begin::Label-->
+                                    <label class="form-check-label" for="kt_modal_update_role_option_3">
+                                        <div class="fw-bolder text-gray-800">Support</div>
+                                        <div class="text-gray-600">Best for employees who regularly refund payments and respond to disputes</div>
+                                    </label>
+                                    <!--end::Label-->
+                                </div>
+                                <!--end::Radio-->
+                            </div>
+                            <!--end::Input row-->
+                            <div class='separator separator-dashed my-5'></div>
+                            <!--begin::Input row-->
+                            <div class="d-flex fv-row">
+                                <!--begin::Radio-->
+                                <div class="form-check form-check-custom form-check-solid">
+                                    <!--begin::Input-->
+                                    <input class="form-check-input me-3" name="user_role" type="radio" value="4" id="kt_modal_update_role_option_4" />
+                                    <!--end::Input-->
+                                    <!--begin::Label-->
+                                    <label class="form-check-label" for="kt_modal_update_role_option_4">
+                                        <div class="fw-bolder text-gray-800">Trial</div>
+                                        <div class="text-gray-600">Best for people who need to preview content data, but don't need to make any updates</div>
+                                    </label>
+                                    <!--end::Label-->
+                                </div>
+                                <!--end::Radio-->
+                            </div>
+                            <!--end::Input row-->
+                            <!--end::Roles-->
+                        </div>
+                        <!--end::Input group-->
+                    </div>
+                    <!--end::Scroll-->
+                    <!--begin::Actions-->
+                    <div class="text-center pt-15">
+                        <button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">Discard</button>
+                        <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
+                            <span class="indicator-label">Submit</span>
+                            <span class="indicator-progress">
+                                Please wait...
+                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                            </span>
+                        </button>
+                    </div>
+                    <!--end::Actions-->
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="flex-column flex-lg-row-auto w-100 w-lg-250px w-xl-300px mb-10 order-1 order-lg-2">
+        <div class="card card-flush pt-3 mb-0" data-kt-sticky="true" data-kt-sticky-name="subscription-summary" data-kt-sticky-offset="{default: false, lg: '200px'}" data-kt-sticky-width="{lg: '250px', xl: '300px'}" data-kt-sticky-left="auto" data-kt-sticky-top="150px" data-kt-sticky-animation="false" data-kt-sticky-zindex="95">
+            <!--begin::Card header-->
+            <div class="card-header">
+                <!--begin::Card title-->
+                <div class="card-title">
+                    <h2>Summary</h2>
+                </div>
+                <!--end::Card title-->
+            </div>
+            <!--end::Card header-->
+            <!--begin::Card body-->
+            <div class="card-body pt-0 fs-6">
+                <!--begin::Section-->
+                <div class="mb-7">
+                    <!--begin::Title-->
+                    <h5 class="mb-3">Customer details</h5>
+                    <!--end::Title-->
+                    <!--begin::Details-->
+                    <div class="d-flex align-items-center mb-1">
+                        <!--begin::Name-->
+                        <a href="../../demo14/dist/apps/customers/view.html" class="fw-bolder text-gray-800 text-hover-primary me-2">Sean Bean</a>
+                        <!--end::Name-->
+                        <!--begin::Status-->
+                        <span class="badge badge-light-success">Active</span>
+                        <!--end::Status-->
+                    </div>
+                    <!--end::Details-->
+                    <!--begin::Email-->
+                    <a href="#" class="fw-bold text-gray-600 text-hover-primary">sean@dellito.com</a>
+                    <!--end::Email-->
+                </div>
+                <!--end::Section-->
+                <!--begin::Seperator-->
+                <div class="separator separator-dashed mb-7"></div>
+                <!--end::Seperator-->
+                <!--begin::Section-->
+                <div class="mb-7">
+                    <!--begin::Title-->
+                    <h5 class="mb-3">Product details</h5>
+                    <!--end::Title-->
+                    <!--begin::Details-->
+                    <div class="mb-0">
+                        <!--begin::Plan-->
+                        <span class="badge badge-light-info me-2">Basic Bundle</span>
+                        <!--end::Plan-->
+                        <!--begin::Price-->
+                        <span class="fw-bold text-gray-600">$149.99 / Year</span>
+                        <!--end::Price-->
+                    </div>
+                    <!--end::Details-->
+                </div>
+                <!--end::Section-->
+                <!--begin::Seperator-->
+                <div class="separator separator-dashed mb-7"></div>
+                <!--end::Seperator-->
+                <!--begin::Section-->
+                <div class="mb-10">
+                    <!--begin::Title-->
+                    <h5 class="mb-3">Payment Details</h5>
+                    <!--end::Title-->
+                    <!--begin::Details-->
+                    <div class="mb-0">
+                        <!--begin::Card info-->
+                        <div class="fw-bold text-gray-600 d-flex align-items-center">
+                            Mastercard
+                            <img src="assets/media/svg/card-logos/mastercard.svg" class="w-35px ms-2" alt="">
+                        </div>
+                        <!--end::Card info-->
+                        <!--begin::Card expiry-->
+                        <div class="fw-bold text-gray-600">Expires Dec 2024</div>
+                        <!--end::Card expiry-->
+                    </div>
+                    <!--end::Details-->
+                </div>
+                <!--end::Section-->
+                <!--begin::Actions-->
+                <div class="mb-0">
+                    <button type="submit" class="btn btn-primary" id="kt_subscriptions_create_button">
+                        <!--begin::Indicator-->
+                        <span class="indicator-label">Create Subscription</span>
+                        <span class="indicator-progress">
+                            Please wait...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                        <!--end::Indicator-->
+                    </button>
+                </div>
+                <!--end::Actions-->
+            </div>
+            <!--end::Card body-->
+        </div>
+    </div>
+
+</div>
