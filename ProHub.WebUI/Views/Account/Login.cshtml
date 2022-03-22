@@ -1,4 +1,4 @@
-﻿@model ProHub.Domain.Dtos.Accounts.LoginDto
+﻿@model ProHub.Core.Dtos.Accounts.LoginDto
 @{
     ViewData["Title"] = "Login Page";
     Layout = "_LoginLayout";
@@ -145,4 +145,5 @@
 	await Html.RenderPartialAsync("_ValidationScriptsPartial");
 		}
 @*<script src="/assets/js/custom/authentication/sign-in/general.js"></script>
-*@}
+*@
+}

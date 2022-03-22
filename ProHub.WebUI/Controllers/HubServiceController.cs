@@ -4,9 +4,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProHub.Domain.Dtos.Accounts;
-using ProHub.Domain.Services.Accounts;
-using ProHub.Domain.Services.Jwt;
+using ProHub.Core.Dtos.Accounts;
+using ProHub.Core.Services.Accounts;
+using ProHub.Core.Services.Jwt;
+
 
 namespace ProHub.WebUI.Controllers
 {

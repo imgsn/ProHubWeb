@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup Label="Globals">
     <SccProjectName>SAK</SccProjectName>
@@ -1321,7 +1321,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProHub.Domain\ProHub.Domain.csproj" />
+    <ProjectReference Include="..\ProHub.Core\ProHub.Core.csproj" />
     <ProjectReference Include="..\ProHub.Local\ProHub.Local.csproj" />
   </ItemGroup>
 

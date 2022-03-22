@@ -11,13 +11,11 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using ProHub.Domain.Dtos;
-using ProHub.Domain.Dtos.Accounts;
-using ProHub.Domain.Dtos.Establishments;
-using ProHub.Domain.Dtos.Utils;
-using ProHub.Domain.Entities;
-using ProHub.Domain.Services.Accounts;
-using ProHub.Domain.Services.Establishments;
+using ProHub.Core.Dtos.Accounts;
+using ProHub.Core.Dtos.Establishments;
+using ProHub.Core.Services.Accounts;
+using ProHub.Core.Services.Establishments;
+
 
 namespace ProHub.WebUI.Controllers
 {

@@ -10,11 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using ProHub.Domain;
-using ProHub.Domain.Config;
-using ProHub.Domain.Entities;
-using ProHub.Domain.Extensions;
-using ProHub.Domain.Helpers;
+
 using ProHub.Local;
 
 using System;
@@ -26,6 +22,11 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
+using ProHub.Core.Config;
+using ProHub.Core.Extensions;
+using ProHub.Core.Helpers;
+using ProHub.Data;
+using ProHub.Data.Entities;
 
 namespace ProHub.WebUI
 {

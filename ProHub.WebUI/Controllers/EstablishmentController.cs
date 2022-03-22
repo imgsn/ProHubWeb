@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ProHub.Domain.Dtos.Establishments;
-using ProHub.Domain.Services.Establishments;
+using ProHub.Core.Dtos.Establishments;
+using ProHub.Core.Services.Establishments;
+
 
 namespace ProHub.WebUI.Controllers
 {
