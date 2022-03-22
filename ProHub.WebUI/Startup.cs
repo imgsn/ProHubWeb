@@ -63,7 +63,7 @@ namespace ProHub.WebUI
             services.AddServiceDependencies();
             services.AddControllersWithViews();
             services.AddLocalization();
-
+            services.AddSwaggerGen();
 
             services.AddSingleton<LocalService>();
             services.AddMvc()
@@ -98,6 +98,8 @@ namespace ProHub.WebUI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI();
                 //  app.UseMigrationsEndPoint();
                 app.UseExceptionHandler(builder => builder.Run(async context =>
                 {
@@ -120,6 +122,7 @@ namespace ProHub.WebUI
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -127,7 +130,11 @@ namespace ProHub.WebUI
 
             app.UseAuthentication();
             app.UseAuthorization();
-
+            //app.UseSwaggerUI(options =>
+            //{
+            //    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+            //    options.RoutePrefix = string.Empty;
+            //});
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

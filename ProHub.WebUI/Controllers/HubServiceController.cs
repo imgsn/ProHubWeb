@@ -37,7 +37,7 @@ namespace ProHub.WebUI.Controllers
 
 
         [HttpPost]
-        // [Authorize(AuthenticationSchemes = "api")]
+        [Authorize(AuthenticationSchemes = "api")]
         [Route("Login")]
         public async Task<IActionResult> Login(LoginDto model)
         {
