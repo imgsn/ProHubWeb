@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProHub.Data.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace ProHub.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RoleDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RoleDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -30,20 +30,20 @@ namespace ProHub.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ArName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EnName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MobileNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FaxNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FeaturesJson = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ArName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EnName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MobileNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FaxNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FeaturesJson = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ExpiryDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CommercialDocumentId = table.Column<int>(type: "int", nullable: true),
                     LogoDocumentId = table.Column<int>(type: "int", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    InsertUserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdateUserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    InsertUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -58,12 +58,55 @@ namespace ProHub.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ArName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EnName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ArName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EnName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LookupGroups", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductHubs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    InsertUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductHubs", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TransactionHubs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EstablishmentId = table.Column<int>(type: "int", nullable: false),
+                    DocumentId = table.Column<int>(type: "int", nullable: false),
+                    TransferDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    BankName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BankAccountName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BankAccountNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Notes = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TotalAmount = table.Column<double>(type: "float", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    InsertUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TransactionHubs", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -92,28 +135,28 @@ namespace ProHub.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MobileNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MobileNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EstablishmentId = table.Column<int>(type: "int", nullable: true),
-                    ActivationKey = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ActivationKey = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ActivationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ExpiryDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ProfileDocumentId = table.Column<int>(type: "int", nullable: true),
                     IdentityDocumentId = table.Column<int>(type: "int", nullable: true),
-                    FeaturesJson = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FeaturesJson = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BranchId = table.Column<int>(type: "int", nullable: true),
                     JobTitleId = table.Column<int>(type: "int", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeviceToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DeviceToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TokenDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastLocationDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastLocationAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastLocation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastLocationAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastLocation = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastLoginDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    InsertUserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdateUserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    InsertUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -142,20 +185,134 @@ namespace ProHub.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Branches",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ArName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EnName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MainBranchId = table.Column<int>(type: "int", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    InsertUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EstablishmentId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Branches", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Branches_Establishments_EstablishmentId",
+                        column: x => x.EstablishmentId,
+                        principalTable: "Establishments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "JobTitles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EstablishmentId = table.Column<int>(type: "int", nullable: false),
+                    ArName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EnName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    InsertUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JobTitles", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_JobTitles_Establishments_EstablishmentId",
+                        column: x => x.EstablishmentId,
+                        principalTable: "Establishments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LocationHubs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EstablishmentId = table.Column<int>(type: "int", nullable: false),
+                    ArName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EnName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CityId = table.Column<int>(type: "int", nullable: true),
+                    CategoryId = table.Column<int>(type: "int", nullable: true),
+                    LocationTypeId = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AddressStr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Latitude = table.Column<double>(type: "float", nullable: false),
+                    Longitude = table.Column<double>(type: "float", nullable: false),
+                    BufferArea = table.Column<double>(type: "float", nullable: false),
+                    IsGps = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    InsertUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LocationHubs", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LocationHubs_Establishments_EstablishmentId",
+                        column: x => x.EstablishmentId,
+                        principalTable: "Establishments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MessageHubs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EstablishmentId = table.Column<int>(type: "int", nullable: false),
+                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MessageBody = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    InsertUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MessageHubs", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MessageHubs_Establishments_EstablishmentId",
+                        column: x => x.EstablishmentId,
+                        principalTable: "Establishments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "LookupItems",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ArName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EnName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ArName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EnName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     OrderIndex = table.Column<int>(type: "int", nullable: false),
                     LookupGroupId = table.Column<int>(type: "int", nullable: false),
                     SubLookupId = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    InsertUserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdateUserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    InsertUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -257,27 +414,27 @@ namespace ProHub.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Documents",
+                name: "DocumentHubs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DocumentTypeId = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FileName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MimeType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Data = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FileName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MimeType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Data = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    InsertUserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdateUserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    InsertUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdateUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Documents", x => x.Id);
+                    table.PrimaryKey("PK_DocumentHubs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Documents_LookupItems_DocumentTypeId",
+                        name: "FK_DocumentHubs_LookupItems_DocumentTypeId",
                         column: x => x.DocumentTypeId,
                         principalTable: "LookupItems",
                         principalColumn: "Id",
@@ -329,14 +486,34 @@ namespace ProHub.Data.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Documents_DocumentTypeId",
-                table: "Documents",
+                name: "IX_Branches_EstablishmentId",
+                table: "Branches",
+                column: "EstablishmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DocumentHubs_DocumentTypeId",
+                table: "DocumentHubs",
                 column: "DocumentTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobTitles_EstablishmentId",
+                table: "JobTitles",
+                column: "EstablishmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LocationHubs_EstablishmentId",
+                table: "LocationHubs",
+                column: "EstablishmentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LookupItems_LookupGroupId",
                 table: "LookupItems",
                 column: "LookupGroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MessageHubs_EstablishmentId",
+                table: "MessageHubs",
+                column: "EstablishmentId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -357,7 +534,25 @@ namespace ProHub.Data.Migrations
                 name: "AccountUserToken");
 
             migrationBuilder.DropTable(
-                name: "Documents");
+                name: "Branches");
+
+            migrationBuilder.DropTable(
+                name: "DocumentHubs");
+
+            migrationBuilder.DropTable(
+                name: "JobTitles");
+
+            migrationBuilder.DropTable(
+                name: "LocationHubs");
+
+            migrationBuilder.DropTable(
+                name: "MessageHubs");
+
+            migrationBuilder.DropTable(
+                name: "ProductHubs");
+
+            migrationBuilder.DropTable(
+                name: "TransactionHubs");
 
             migrationBuilder.DropTable(
                 name: "AccountRole");

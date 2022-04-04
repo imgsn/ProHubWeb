@@ -47,7 +47,7 @@ namespace ProHub.WebUI
 
 
             services.AddDbContext<ProHubDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("HubConnection"),
-                b => b.MigrationsAssembly("ProHub.Domain")));
+                b => b.MigrationsAssembly("ProHub.Data")));
 
             services.AddDefaultIdentity<Account>()
                 .AddRoles<AccountRole>()

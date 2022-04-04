@@ -21,7 +21,19 @@ namespace ProHub.Data
         public DbSet<Establishment> Establishments { get; set; }
         public DbSet<LookupItem> LookupItems { get; set; }
         public DbSet<LookupGroup> LookupGroups { get; set; }
-        public DbSet<DocumentHub> Documents { get; set; }
+        public DbSet<DocumentHub> DocumentHubs { get; set; }
+        public DbSet<Branch> Branches { get; set; }
+        public DbSet<JobTitle> JobTitles { get; set; }
+        public DbSet<LocationHub> LocationHubs { get; set; }
+        public DbSet<MessageHub> MessageHubs { get; set; }
+        public DbSet<ProductHub> ProductHubs { get; set; }
+        public DbSet<TransactionHub> TransactionHubs { get; set; }
+
+
+
+
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder
