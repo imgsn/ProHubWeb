@@ -1,6 +1,6 @@
 ﻿@model ProHub.Core.Dtos.Accounts.AccountDto
 @{
-    ViewBag.Title = @Loc.L("AddAccount");
+    ViewBag.Title = Loc.L("AddAccount");
 }
 <form class="form d-flex flex-column flex-lg-row" data-kt-redirect="../../demo20/dist/apps/ecommerce/catalog/categories.html">
     <!--begin::Aside column-->
@@ -11,7 +11,7 @@
             <div class="card-header">
                 <!--begin::Card title-->
                 <div class="card-title">
-                    <h2>Thumbnail</h2>
+                    <h2>@Loc.L("ProfileImage")</h2>
                 </div>
                 <!--end::Card title-->
             </div>
@@ -47,7 +47,7 @@
                 </div>
                 <!--end::Image input-->
                 <!--begin::Description-->
-                <div class="text-muted fs-7">Set the category thumbnail image. Only *.png, *.jpg and *.jpeg image files are accepted</div>
+                <div class="text-muted fs-7"> Only *.png, *.jpg and *.jpeg </div>
                 <!--end::Description-->
             </div>
             <!--end::Card body-->
@@ -59,7 +59,7 @@
             <div class="card-header">
                 <!--begin::Card title-->
                 <div class="card-title">
-                    <h2>Status</h2>
+                    <h2>@Loc.L("Status")</h2>
                 </div>
                 <!--end::Card title-->
                 <!--begin::Card toolbar-->
@@ -74,18 +74,32 @@
                 <!--begin::Select2-->
                 <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select an option" id="kt_ecommerce_add_category_status_select">
                     <option></option>
-                    <option value="published" selected="selected">Published</option>
-                    <option value="scheduled">Scheduled</option>
-                    <option value="unpublished">Unpublished</option>
+                    <option value="1" selected="selected">@Loc.L("Yes")</option>
+                    <option value="0">@Loc.L("No")</option>
                 </select>
                 <!--end::Select2-->
-                <!--begin::Description-->
-                <div class="text-muted fs-7">Set the category status.</div>
-                <!--end::Description-->
-                <!--begin::Datepicker-->
-                <div class="d-none mt-10">
-                    <label for="kt_ecommerce_add_category_status_datepicker" class="form-label">Select publishing date and time</label>
-                    <input class="form-control" id="kt_ecommerce_add_category_status_datepicker" placeholder="Pick date &amp; time" />
+
+                <div class=" mb-4">
+                    <label class="required form-label" asp-for="ActivationDate"></label>
+                    <div class="input-group  ">
+                        <span class="input-group-text">
+                            <i class="las la-clock fs-2 text-primary"></i>
+                        </span>
+                        <input type="text" class="form-control " asp-for="ActivationDate" />
+                        <span asp-validation-for="ActivationDate"></span>
+
+                    </div>
+                </div>
+                <div class=" mb-4">
+                    <label class="required form-label" asp-for="ExpiryDate"></label>
+                    <div class="input-group  ">
+                        <span class="input-group-text">
+                            <i class="las la-stopwatch fs-2 text-primary"></i>
+                        </span>
+                        <input type="text" class="form-control " asp-for="ExpiryDate" />
+                        <span asp-validation-for="ExpiryDate"></span>
+
+                    </div>
                 </div>
                 <!--end::Datepicker-->
             </div>
@@ -133,26 +147,104 @@
             <!--begin::Card header-->
             <div class="card-header">
                 <div class="card-title">
-                    <h2>General</h2>
+                    <h2>@Loc.L("Profile")</h2>
                 </div>
             </div>
             <!--end::Card header-->
             <!--begin::Card body-->
             <div class="card-body pt-0">
-                <!--begin::Input group-->
-                <div class="mb-10">
-                    <!--begin::Label-->
-                    <label class="required form-label" asp-for="FirstName" ></label>
-                    <!--end::Label-->
-                    <!--begin::Input-->
-                    <input type="text"   class="form-control mb-2"  asp-for="FirstName"/>
-                    <!--end::Input-->
-                    <!--begin::Description-->
-                    <div class="text-muted fs-7">A category name is required and recommended to be unique.</div>
-                    <!--end::Description-->
+                <div class=" mb-4">
+                    <label class="required form-label" asp-for="FullName"></label>
+                    <div class="input-group  ">
+                        <span class="input-group-text">
+                            <i class="las la-user fs-2 text-primary"></i>
+                        </span>
+                        <input type="text" class="form-control " asp-for="FullName" />
+                        <span asp-validation-for="FullName"></span>
+
+                    </div>
                 </div>
-                <!--end::Input group-->
-                 
+                @* <div class=" mb-4">
+                    <label class="required form-label" asp-for="LastName"></label>
+                    <div class="input-group  ">
+                    <span class="input-group-text">
+                    <i class="las la-user fs-2 text-primary"></i>
+                    </span>
+                    <input type="text" class="form-control " asp-for="LastName" />
+                    <span asp-validation-for="LastName"></span>
+
+                    </div>
+                    </div>*@
+                <div class=" mb-4">
+                    <label class="required form-label" asp-for="Email"></label>
+                    <div class="input-group  ">
+                        <span class="input-group-text">
+                            <i class="las la-envelope fs-2 text-primary"></i>
+                        </span>
+                        <input type="text" class="form-control " asp-for="Email" />
+                        <span asp-validation-for="Email"></span>
+
+                    </div>
+                </div>
+                <div class=" mb-4">
+                    <label class="required form-label" asp-for="MobileNumber"></label>
+                    <div class="input-group  ">
+                        <span class="input-group-text">
+                            <i class="las la-phone-volume fs-2 text-primary"></i>
+                        </span>
+                        <input type="text" class="form-control " asp-for="MobileNumber" />
+                        <span asp-validation-for="MobileNumber"></span>
+
+                    </div>
+                </div>
+                @* <div class=" mb-4">
+                    <label class="required form-label" asp-for="WorkPhone"></label>
+                    <div class="input-group  ">
+                    <span class="input-group-text">
+                    <i class="las la-phone fs-2 text-primary"></i>
+                    </span>
+                    <input type="text" class="form-control " asp-for="WorkPhone" />
+                    <span asp-validation-for="WorkPhone"></span>
+
+                    </div>
+                    </div>*@
+                <div class=" mb-4">
+                    <label class="required form-label" asp-for="Password"></label>
+                    <div class="input-group  ">
+                        <span class="input-group-text">
+                            <i class="las la-lock fs-2 text-primary"></i>
+                        </span>
+                        <input type="text" class="form-control " asp-for="Password" />
+                        <span asp-validation-for="Password"></span>
+
+                    </div>
+                </div>
+
+
+                <div class=" mb-4">
+                    <label class="required form-label" asp-for="ConfirmPassword"></label>
+                    <div class="input-group  ">
+                        <span class="input-group-text">
+                            <i class="las la-lock fs-2 text-primary"></i>
+                        </span>
+                        <input type="text" class="form-control " asp-for="ConfirmPassword" />
+                        <span asp-validation-for="ConfirmPassword"></span>
+
+                    </div>
+                </div>
+                <div class=" mb-4">
+                    <label class="required form-label" asp-for="Description"></label>
+                    <div class="input-group  ">
+                        <span class="input-group-text">
+                            <i class="las la-edit fs-2 text-primary"></i>
+                        </span>
+                        <textarea rows="4" cols="4" class="form-control " asp-for="Description"></textarea>
+                        <span asp-validation-for="Description"></span>
+
+                    </div>
+                </div>
+
+
             </div>
             <!--end::Card header-->
         </div>
@@ -162,54 +254,65 @@
             <!--begin::Card header-->
             <div class="card-header">
                 <div class="card-title">
-                    <h2>Meta Options</h2>
+                    <h2>@Loc.L("Role")</h2>
                 </div>
             </div>
             <!--end::Card header-->
             <!--begin::Card body-->
             <div class="card-body pt-0">
-                <!--begin::Input group-->
-                <div class="mb-10">
-                    <!--begin::Label-->
-                    <label class="form-label">Meta Tag Title</label>
-                    <!--end::Label-->
-                    <!--begin::Input-->
-                    <input type="text" class="form-control mb-2" name="meta_title" placeholder="Meta tag name" />
-                    <!--end::Input-->
-                    <!--begin::Description-->
-                    <div class="text-muted fs-7">Set a meta tag title. Recommended to be simple and precise keywords.</div>
-                    <!--end::Description-->
-                </div>
-                <!--end::Input group-->
-                <!--begin::Input group-->
-                <div class="mb-10">
-                    <!--begin::Label-->
-                    <label class="form-label">Meta Tag Description</label>
-                    <!--end::Label-->
-                    <!--begin::Editor-->
-                    <div id="kt_ecommerce_add_category_meta_description" name="kt_ecommerce_add_category_meta_description" class="min-h-100px mb-2"></div>
-                    <!--end::Editor-->
-                    <!--begin::Description-->
-                    <div class="text-muted fs-7">Set a meta tag description to the category for increased SEO ranking.</div>
-                    <!--end::Description-->
-                </div>
-                <!--end::Input group-->
-                <!--begin::Input group-->
-                <div>
-                    <!--begin::Label-->
-                    <label class="form-label">Meta Tag Keywords</label>
-                    <!--end::Label-->
-                    <!--begin::Editor-->
-                    <input id="kt_ecommerce_add_category_meta_keywords" name="kt_ecommerce_add_category_meta_keywords" class="form-control mb-2" />
-                    <!--end::Editor-->
-                    <!--begin::Description-->
-                    <div class="text-muted fs-7">
-                        Set a list of keywords that the category is related to. Separate the keywords by adding a comma
-                        <code>,</code>between each keyword.
+                <div class="d-flex ">
+                    <div class="form-check form-check-custom form-check-solid">
+                        <!--begin::Input-->
+                        <input class="form-check-input me-3" name="method" type="checkbox" value="true" />
+                        <!--end::Input-->
+                        <!--begin::Label-->
+                        <label class="form-check-label">
+                            <div class="fw-bolder text-gray-800">Automatic</div>
+                            <div class="text-gray-600">Products matched with the following conditions will be automatically assigned to this category.</div>
+                        </label>
+                        <!--end::Label-->
                     </div>
-                    <!--end::Description-->
                 </div>
-                <!--end::Input group-->
+                <div class="d-flex mt-4">
+                    <div class="form-check form-check-custom form-check-solid">
+                        <!--begin::Input-->
+                        <input class="form-check-input me-3" name="method" type="checkbox" value="true" />
+                        <!--end::Input-->
+                        <!--begin::Label-->
+                        <label class="form-check-label">
+                            <div class="fw-bolder text-gray-800">Automatic</div>
+                            <div class="text-gray-600">Products matched with the following conditions will be automatically assigned to this category.</div>
+                        </label>
+                        <!--end::Label-->
+                    </div>
+                </div>
+                <div class="d-flex mt-4">
+                    <div class="form-check form-check-custom form-check-solid">
+                        <!--begin::Input-->
+                        <input class="form-check-input me-3" name="method" type="checkbox" value="true" />
+                        <!--end::Input-->
+                        <!--begin::Label-->
+                        <label class="form-check-label">
+                            <div class="fw-bolder text-gray-800">Automatic</div>
+                            <div class="text-gray-600">Products matched with the following conditions will be automatically assigned to this category.</div>
+                        </label>
+                        <!--end::Label-->
+                    </div>
+                </div>
+                <div class="d-flex mt-4">
+                    <div class="form-check form-check-custom form-check-solid">
+                        <!--begin::Input-->
+                        <input class="form-check-input me-3" name="method" type="checkbox" value="true" />
+                        <!--end::Input-->
+                        <!--begin::Label-->
+                        <label class="form-check-label">
+                            <div class="fw-bolder text-gray-800">Automatic</div>
+                            <div class="text-gray-600">Products matched with the following conditions will be automatically assigned to this category.</div>
+                        </label>
+                        <!--end::Label-->
+                    </div>
+                </div>
+
             </div>
             <!--end::Card header-->
         </div>
@@ -380,3 +483,14 @@
     </div>
     <!--end::Main column-->
 </form>
+@section Scripts
+{
+<script>
+
+    KTUtil.onDOMContentLoaded(function() {
+         $("#ActivationDate").flatpickr();
+          $("#ExpiryDate").flatpickr();
+    });
+
+</script>
+}

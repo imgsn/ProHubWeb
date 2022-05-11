@@ -12,13 +12,13 @@ namespace ProHub.Core.Dtos.Accounts
     public class AccountDto
     {
         [Required(ErrorMessage = "Err_Required")]
-        [Display(Name = "FirstName", Prompt = "FirstName")]
+        [Display(Name = "FullName", Prompt = "FullName")]
 
-        public string FirstName { get; set; }
+        public string FullName { get; set; }
 
-        [Required(ErrorMessage = "Err_Required")]
-        [Display(Name = "LastName", Prompt = "LastName")]
-        public string LastName { get; set; }
+        //[Required(ErrorMessage = "Err_Required")]
+        //[Display(Name = "LastName", Prompt = "LastName")]
+        //public string LastName { get; set; }
 
 
         [Remote("CheckUser", "Account", HttpMethod = "POST", ErrorMessage = "Err_EmailNotUnique")]
@@ -49,13 +49,13 @@ namespace ProHub.Core.Dtos.Accounts
 
         public int EstablishmentId { get; set; }
 
-        [Required(ErrorMessage = "Err_Required")]
-        [Display(Name = "WorkPhone", Prompt = "WorkPhone")]
-        public string WorkPhone { get; set; }
+        //[Required(ErrorMessage = "Err_Required")]
+        //[Display(Name = "WorkPhone", Prompt = "WorkPhone")]
+        //public string WorkPhone { get; set; }
 
-        [Required(ErrorMessage = "Err_Required")]
-        [Display(Name = "ActivationKey", Prompt = "ActivationKey")]
-        public string ActivationKey { get; set; }
+        //[Required(ErrorMessage = "Err_Required")]
+        //[Display(Name = "ActivationKey", Prompt = "ActivationKey")]
+        //public string ActivationKey { get; set; }
 
         [Required(ErrorMessage = "Err_Required")]
         [Display(Name = "ActivationDate", Prompt = "ActivationDate")]
@@ -70,11 +70,15 @@ namespace ProHub.Core.Dtos.Accounts
         [Display(Name = "IsActive", Prompt = "IsActive")]
         public bool IsActive { get; set; }
 
-        public DateTime? LastLocationDate { get; set; }
-        public string LastLocationAddress { get; set; }
-        public string LastLocation { get; set; }
-        public DateTime? LastLoginDate { get; set; }
+        //public DateTime? LastLocationDate { get; set; }
+        //public string LastLocationAddress { get; set; }
+        //public string LastLocation { get; set; }
+        //public DateTime? LastLoginDate { get; set; }
 
         public FeaturesDto FeaturesDto { get; set; }
+
+        [Display(Name = "Notes", Prompt = "Notes")]
+        public string Description { get; set; }
+
     }
 }
