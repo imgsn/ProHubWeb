@@ -97,6 +97,10 @@ namespace ProHub.WebUI.Controllers
             return View();
         }
 
+        public IActionResult Add()
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> AddRole(RoleDto model)
