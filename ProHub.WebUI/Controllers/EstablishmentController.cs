@@ -5,17 +5,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using ProHub.Core.Dtos.Establishments;
 using ProHub.Core.Services.Establishments;
-
+using Microsoft.Extensions.Logging;
 
 namespace ProHub.WebUI.Controllers
 {
-    public class EstablishmentController : Controller
+    public class EstablishmentController : BaseController
     {
         private readonly IEstablishmentServices _establishmentServices;
+        private readonly ILogger<EstablishmentController> _logger;
 
-        public EstablishmentController(IEstablishmentServices establishmentServices)
+        public EstablishmentController(
+            IEstablishmentServices establishmentServices,
+            ILogger<EstablishmentController> logger)
         {
             _establishmentServices = establishmentServices;
+            _logger = logger;
         }
 
         public IActionResult Index()

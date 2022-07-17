@@ -26,8 +26,8 @@ namespace ProHub.Data.Repository
             DbSet.FromSqlRaw(sql, parameters);
 
         public virtual IEnumerable<TEntity> Find(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Expression<Func<TEntity, bool>>? filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
             string includeProperties = "")
         {
             IQueryable<TEntity> query = DbSet;
@@ -39,9 +39,9 @@ namespace ProHub.Data.Repository
         }
 
         public virtual IEnumerable<TEntity> Find(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
+            Expression<Func<TEntity, bool>>? filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
             bool disableTracking = false)
         {
             IQueryable<TEntity> query = DbSet;
@@ -53,8 +53,8 @@ namespace ProHub.Data.Repository
         }
 
         public virtual IQueryable<TEntity> FindIQueryable(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Expression<Func<TEntity, bool>>? filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
             string includeProperties = "")
         {
             IQueryable<TEntity> query = DbSet;
@@ -66,9 +66,9 @@ namespace ProHub.Data.Repository
         }
 
         public virtual IQueryable<TEntity> FindIQueryable(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
+            Expression<Func<TEntity, bool>>? filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
             bool disableTracking = false)
         {
             IQueryable<TEntity> query = DbSet;
@@ -79,8 +79,8 @@ namespace ProHub.Data.Repository
         }
 
         public virtual async Task<IEnumerable<TEntity>> FindAsync(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Expression<Func<TEntity, bool>>? filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
             string includeProperties = "")
         {
             IQueryable<TEntity> query = DbSet;
@@ -96,9 +96,9 @@ namespace ProHub.Data.Repository
         }
 
         public virtual async Task<IEnumerable<TEntity>> FindAsync(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
+            Expression<Func<TEntity, bool>>? filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
             bool disableTracking = false)
         {
             IQueryable<TEntity> query = DbSet;
@@ -112,8 +112,8 @@ namespace ProHub.Data.Repository
         }
 
         public virtual async Task<IPagedList<TEntity>> FindPagedAsync(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Expression<Func<TEntity, bool>>? filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
             string includeProperties = "", int pageNum = 1, int pageSize = 10)
         {
             IQueryable<TEntity> query = DbSet;
@@ -129,9 +129,9 @@ namespace ProHub.Data.Repository
         }
 
         public virtual async Task<IPagedList<TEntity>> FindPagedAsync(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
+            Expression<Func<TEntity, bool>>? filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
             bool disableTracking = false, int pageNum = 1, int pageSize = 10)
         {
             IQueryable<TEntity> query = DbSet;
@@ -144,8 +144,8 @@ namespace ProHub.Data.Repository
         }
 
         public virtual IPagedList<TEntity> FindPaged(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Expression<Func<TEntity, bool>>? filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
             string includeProperties = "", int pageNum = 1, int pageSize = 10)
         {
             IQueryable<TEntity> query = DbSet;
@@ -161,9 +161,9 @@ namespace ProHub.Data.Repository
         }
 
         public virtual IPagedList<TEntity> FindPaged(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
+            Expression<Func<TEntity, bool>>? filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
             bool disableTracking = false, int pageNum = 1, int pageSize = 10)
         {
             IQueryable<TEntity> query = DbSet;
@@ -176,10 +176,7 @@ namespace ProHub.Data.Repository
                 : query.ToPagedList(pageNum, pageSize);
         }
 
-        public virtual TEntity FindById(object id)
-        {
-            return DbSet.Find(id);
-        }
+        public virtual TEntity FindById(object id) => DbSet.Find(id);
 
         public virtual async Task<TEntity> FindByIdAsync(object id)
         {
@@ -285,7 +282,7 @@ namespace ProHub.Data.Repository
             DbSet.Remove(entityToDelete);
         }
 
-        public virtual void DeleteRange(Expression<Func<TEntity, bool>> filter = null)
+        public virtual void DeleteRange(Expression<Func<TEntity, bool>>? filter = null)
         {
             IQueryable<TEntity> query = DbSet;
             if (filter != null)

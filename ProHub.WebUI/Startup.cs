@@ -22,6 +22,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
+using Microsoft.OpenApi.Models;
 using ProHub.Core.Config;
 using ProHub.Core.Extensions;
 using ProHub.Core.Helpers;
@@ -86,6 +87,45 @@ namespace ProHub.WebUI
 
                     options.AddInitialRequestCultureProvider(new CookieRequestCultureProvider() { CookieName = ConstantHelper.CookiesName });
                 });
+
+
+
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Onion Architecture WIth DotNet6",
+                    Version = "v1",
+                    Description = "This Api will be responsible for overall data distribution and authorization.",
+                });
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    Description = "Input your Bearer token in this format - Bearer {your token here} to access this API",
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer",
+                            },
+                            Scheme = "Bearer",
+                            Name = "Bearer",
+                            In = ParameterLocation.Header,
+                        }, new List<string>()
+                    },
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -130,6 +170,8 @@ namespace ProHub.WebUI
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+
             //app.UseSwaggerUI(options =>
             //{
             //    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
