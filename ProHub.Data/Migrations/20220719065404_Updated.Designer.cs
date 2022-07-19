@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProHub.Data;
 
@@ -11,9 +12,10 @@ using ProHub.Data;
 namespace ProHub.Data.Migrations
 {
     [DbContext(typeof(ProHubDbContext))]
-    partial class ProHubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220719065404_Updated")]
+    partial class Updated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -11,6 +11,7 @@ namespace ProHub.Data.Entities
     {
         public int Id { get; set; }
         public int CategoryId { get; set; }
+        public int EstablishmentId { get; set; }
 
 
         public bool IsActive { get; set; }
@@ -18,6 +19,10 @@ namespace ProHub.Data.Entities
         public string UpdateUserId { get; set; }
         public DateTime InsertDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
+
+
+        public virtual Establishment Establishment { get; set; }
+
 
     }
 }

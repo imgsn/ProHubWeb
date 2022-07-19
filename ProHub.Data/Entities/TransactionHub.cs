@@ -26,5 +26,9 @@ namespace ProHub.Data.Entities
         public string UpdateUserId { get; set; }
         public DateTime InsertDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
+
+
+        public virtual Establishment Establishment { get; set; }
+
     }
 }

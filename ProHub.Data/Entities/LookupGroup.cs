@@ -16,3 +16,6 @@ namespace ProHub.Data.Entities
         public virtual ICollection<LookupItem> LookupItems { get; set; }
     }
 }
+//WeekDays
+//Visit Status
+//TimeZone
